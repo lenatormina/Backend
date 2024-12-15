@@ -1,28 +1,12 @@
-// Запуск модуля - node index
-// require("./module");
-
-// const person = {
-//   name: "Elena",
-//   age: 22,
-// };
-// function getName(p) {
-//   return p.name;
-// }
-// console.log(getName(person));
-
-// console.log(__filename); - открытый файл
-// console.log(__dirname); - папка открытого файла(директория)
-
-// console.log(process.argv); - первый вывод - где установлена нода, второй - путь до файла
-
-const { addNote, printNotes } = require('./notes.controller');
+const { addNote, printNotes, removeNote } = require('./notes.controller');
 
 const pkg = require('./package.json');
 const yargs = require('yargs');
 yargs.version(pkg.version);
+
 yargs.command({
 	command: 'add',
-	describe: 'Add a new note to list',
+	describe: 'Add new note to list',
 	builder: {
 		title: {
 			type: 'string',
@@ -53,7 +37,7 @@ yargs.command({
 			demandOption: true,
 		},
 	},
-	handler({ id }) {
+	async handler({ id }) {
 		removeNote(id);
 	},
 });
