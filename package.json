@@ -1,34 +1,39 @@
 {
-  "name": "note-app",
-  "version": "1.0.1",
-  "description": "This is simple NodeJS Application",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prettier": "prettier --check '**/**/*.{js,jsx,ts,tsx,css}'",
-    "prettier:fix": "prettier --write '**/**/*.{js,jsx,ts,tsx,css}'"
-  },
-  "keywords": [
-    "node",
-    "javascript"
-  ],
-  "author": "Elena <e@mail.ru>",
-  "license": "ISC",
-  "dependencies": {
-    "@types/yargs": "^17.0.33",
-    "chalk": "^4.1.2",
-    "yargs": "^17.7.2"
-  },
-  "eslintConfig": {
-    "extends": [
-      "prettier"
-    ],
-    "plugins": [
-      "prettier"
-    ]
-  },
-  "devDependencies": {
-    "eslint-config-prettier": "^9.1.0",
-    "prettier": "^3.4.2"
-  }
+	"name": "note-app",
+	"version": "1.0.1",
+	"description": "This is simple NodeJS Application",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"prettier": "prettier --check '**/**/*.{js,jsx,ts,tsx,css}'",
+		"prettier:fix": "prettier --write '**/**/*.{js,jsx,ts,tsx,css}'",
+		"start": "node index.js",
+		"serve": "nodemon index.js"
+	},
+	"keywords": [
+		"node",
+		"javascript"
+	],
+	"author": "Elena <e@mail.ru>",
+	"license": "ISC",
+	"dependencies": {
+		"chalk": "^4.1.2",
+		"ejs": "^3.1.10",
+		"express": "^4.21.2",
+		"yargs": "^17.7.2"
+	},
+	"eslintConfig": {
+		"extends": [
+			"prettier"
+		],
+		"plugins": [
+			"prettier"
+		]
+	},
+	"devDependencies": {
+		"@types/yargs": "^17.0.33",
+		"eslint-config-prettier": "^9.1.0",
+		"nodemon": "^3.1.9",
+		"prettier": "^3.4.2"
+	}
 }
