@@ -37,8 +37,8 @@
 					<li class="list-group-item d-flex justify-content-between align-items-center">
 						<span class="note-title"><%= notes[i].title %></span>
 						<div class="ms-auto">
+							<button class="btn btn-primary" data-type="edit" data-id="<%= notes[i].id %>" >Обновить</button>
 							<button class="btn btn-danger" data-type="remove" data-id="<%= notes[i].id %>">x</button>
-							<button class="btn btn-primary" data-type="edit" data-id="<%= notes[i].id %>" >Редактировать</button>
 						</div>
 					</li>
 					<%}%>
