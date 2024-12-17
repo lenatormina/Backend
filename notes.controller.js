@@ -36,8 +36,19 @@ async function removeNote(id) {
 	console.log(chalk.bgGreen('Note was removed!'));
 }
 
+async function updateNote(id, title) {
+	const notes = await getNotes();
+	const noteIndex = notes.findIndex((note) => note.id === id);
+	if (noteIndex !== -1) {
+		notes[noteIndex].title = title;
+		await fs.writeFile(notesPath, JSON.stringify(notes));
+		console.log(chalk.bgGreen('Note was updated!'));
+	}
+}
+
 module.exports = {
 	addNote,
 	getNotes,
 	removeNote,
+	updateNote,
 };
