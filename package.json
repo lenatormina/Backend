@@ -20,6 +20,7 @@
 		"chalk": "^4.1.2",
 		"ejs": "^3.1.10",
 		"express": "^4.21.2",
+		"mongoose": "^8.9.1",
 		"yargs": "^17.7.2"
 	},
 	"eslintConfig": {

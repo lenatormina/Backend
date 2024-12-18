@@ -1,6 +1,7 @@
 const express = require('express');
 const chalk = require('chalk');
 const path = require('path');
+const mongoose = require('mongoose');
 const { addNote, getNotes, removeNote, updateNote } = require('./notes.controller.js');
 
 const port = 3000;
@@ -18,15 +19,27 @@ app.get('/', async (req, res) => {
 		title: 'Express App',
 		notes: await getNotes(),
 		created: false,
+		error: false,
 	});
 });
 app.post('/', async (req, res) => {
-	await addNote(req.body.title);
-	res.render('index', {
-		title: 'Express App',
-		notes: await getNotes(),
-		created: true,
-	});
+	try {
+		await addNote(req.body.title);
+		res.render('index', {
+			title: 'Express App',
+			notes: await getNotes(),
+			created: true,
+			error: false,
+		});
+	} catch (e) {
+		console.error('Creation error', e);
+		res.render('index', {
+			title: 'Express App',
+			notes: await getNotes(),
+			created: false,
+			error: true,
+		});
+	}
 });
 
 app.delete('/:id', async (req, res) => {
@@ -35,6 +48,7 @@ app.delete('/:id', async (req, res) => {
 		title: 'Express App',
 		notes: await getNotes(),
 		created: false,
+		error: false,
 	});
 });
 
@@ -44,9 +58,12 @@ app.put('/:id', async (req, res) => {
 		title: 'Express App',
 		notes: await getNotes(),
 		created: true,
+		error: false,
 	});
 });
 
-app.listen(port, () => {
-	console.log(chalk.green(`Server has been started on port ${port}...`));
+mongoose.connect('Добавить свою строку подключения').then(() => {
+	app.listen(port, () => {
+		console.log(chalk.green(`Server has been started on port ${port}...`));
+	});
 });
