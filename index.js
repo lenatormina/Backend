@@ -145,8 +145,12 @@ app.put('/:id', async (req, res) => {
 	}
 });
 
-mongoose.connect('Добавить свою строку подключения').then(() => {
-	app.listen(port, () => {
-		console.log(chalk.green(`Server has been started on port ${port}...`));
+mongoose
+	.connect(
+		'mongodb+srv://elena:<qwerty123>@cluster0.axn9s.mongodb.net/notes?retryWrites=true&w=majority&appName=Cluster0',
+	)
+	.then(() => {
+		app.listen(port, () => {
+			console.log(chalk.green(`Server has been started on port ${port}...`));
+		});
 	});
-});
