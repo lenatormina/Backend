@@ -147,7 +147,7 @@ app.put('/:id', async (req, res) => {
 
 mongoose
 	.connect(
-		'mongodb+srv://elena:<qwerty123>@cluster0.axn9s.mongodb.net/notes?retryWrites=true&w=majority&appName=Cluster0',
+		'mongodb+srv://elena:qwerty123@cluster0.axn9s.mongodb.net/notes?retryWrites=true&w=majority&appName=Cluster0',
 	)
 	.then(() => {
 		app.listen(port, () => {
