@@ -3,6 +3,10 @@ const { JWT_SECRET } = require('../constants');
 
 function auth(req, res, next) {
 	const token = req.cookies.token;
+	if (!token) {
+		req.user = null;
+		return next();
+	}
 	try {
 		const verifyResult = jwt.verify(token, JWT_SECRET);
 
@@ -12,7 +16,9 @@ function auth(req, res, next) {
 
 		next();
 	} catch (e) {
-		res.redirect('/login');
+		console.error('Token verification failed:', e);
+		req.user = null;
+		next();
 	}
 }
 

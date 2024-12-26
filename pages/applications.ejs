@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <title><%= title %></title>
+</head>
+<body>
+
+  <%- include('./partials/user-header') %>
+
+  <div class="container my-5">
+      <h1 class="text-center">Заявки с формы</h1>
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                  <th>Дата отправки</th>
+                  <th>ФИО</th>
+                  <th>Телефон</th>
+                  <th>Проблема</th>
+              </tr>
+          </thead>
+          <tbody>
+              <% applications.forEach(application => { %>
+                  <tr>
+                      <td><%= application.createdAt.toLocaleString() %></td>
+                      <td><%= application.fullName %></td>
+                      <td><%= application.phoneNumber %></td>
+                      <td><%= application.problemDescription || 'N/A' %></td>
+                  </tr>
+              <% }) %>
+          </tbody>
+      </table>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
