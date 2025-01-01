@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const { addNote, getNotes, removeNote, updateNote } = require('./notes.controller.js');
 const { addUser, loginUser } = require('./users.controller.js');
 const auth = require('./middlewares/auth');
-const { require } = require('yargs');
+const yargs = require('yargs');
 
 const port = 3000;
 const app = express();
