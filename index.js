@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const chalk = require('chalk');
 const path = require('path');
@@ -6,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const { addNote, getNotes, removeNote, updateNote } = require('./notes.controller.js');
 const { addUser, loginUser } = require('./users.controller.js');
 const auth = require('./middlewares/auth');
+const { require } = require('yargs');
 
 const port = 3000;
 const app = express();
@@ -145,12 +147,8 @@ app.put('/:id', async (req, res) => {
 	}
 });
 
-mongoose
-	.connect(
-		'mongodb+srv://elena:qwerty123@cluster0.axn9s.mongodb.net/notes?retryWrites=true&w=majority&appName=Cluster0',
-	)
-	.then(() => {
-		app.listen(port, () => {
-			console.log(chalk.green(`Server has been started on port ${port}...`));
-		});
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING).then(() => {
+	app.listen(port, () => {
+		console.log(chalk.green(`Server has been started on port ${port}...`));
 	});
+});
